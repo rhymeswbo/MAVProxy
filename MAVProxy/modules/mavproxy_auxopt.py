@@ -21,14 +21,15 @@ aux_options = {
     "AcroTrainer":"14",
     "Auto":"16",
     "AutoTune":"17",
-    "Land":"18"
+    "Land":"18",
+    "CameraAngle":"29"
 }
 
 class AuxoptModule(mp_module.MPModule):
     def __init__(self, mpstate):
         super(AuxoptModule, self).__init__(mpstate, "auxopt", "auxopt command handling")
         self.add_command('auxopt', self.cmd_auxopt,   'select option for aux switches on CH7 and CH8 (ArduCopter only)',
-                         ['set <7|8> <Nothing|Flip|SimpleMode|RTL|SaveTrim|SaveWP|MultiMode|CameraTrigger|Sonar|Fence|ResetYaw|SuperSimpleMode|AcroTrainer|Acro|Auto|AutoTune|Land>',
+                         ['set <7|8> <Nothing|Flip|SimpleMode|RTL|SaveTrim|SaveWP|MultiMode|CameraTrigger|Sonar|Fence|ResetYaw|SuperSimpleMode|AcroTrainer|Acro|Auto|AutoTune|Land|CameraAngle>',
                           'reset <7|8|all>',
                           '<show|list>'])
 

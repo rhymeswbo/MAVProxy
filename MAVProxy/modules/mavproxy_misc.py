@@ -70,7 +70,22 @@ class MiscModule(mp_module.MPModule):
         self.add_command('land', self.cmd_land, "auto land")
         self.add_command('repeat', self.cmd_repeat, "repeat a command at regular intervals",
                          ["<add|remove|clear>"])
+        self.add_command('cam0', self.cmd_cam0, "0 forward, 1 down")
+        self.add_command('cam1', self.cmd_cam1, "0 forward, 1 down")
         self.repeats = []
+
+    def cmd_cam0(self, args):
+        '''chooseing cam 0: 0 forward, 1 down'''
+        self.master.mav.command_long_send(self.status.target_system,
+                                              self.status.target_component,
+                                              mavutil.mavlink.SET_CAMERA_CHANNEL_FORWARD,
+                                              0, 0, 0, 0, 0, 0, 0, 0)
+    def cmd_cam1(self, args):
+        '''choosing cam 1: 0 forward, 1 down'''
+        self.master.mav.command_long_send(self.status.target_system,
+                                              self.status.target_component,
+                                              mavutil.mavlink.SET_CAMERA_CHANNEL_DOWN,
+                                              0, 0, 0, 0, 0, 0, 0, 0)
 
     def altitude_difference(self, pressure1, pressure2, ground_temp):
         '''calculate barometric altitude'''
